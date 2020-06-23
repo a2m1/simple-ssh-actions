@@ -1,0 +1,23 @@
+name: 'Slim SSH Action'
+description: 'Executing remote ssh commands using debian-slim container'
+author: 'Alexander Militenko'
+branding:
+  icon: 'terminal'
+  color: 'blue'
+inputs:
+  host:
+    description: 'Host for SSH connection'
+  username:
+    description: 'Username for SSH connection'
+  key:
+    description: 'Content of  the private key. Eg content of ~/.ssh/id_rsa'
+  fingerprint:
+    description: 'Fingerprint of remote host. Can be obtained with `ssh-keyscan <host>'
+  script:
+    description: 'Command to be executed on the remote host'
+  debug:
+    description: 'Enable debug output'
+    default: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

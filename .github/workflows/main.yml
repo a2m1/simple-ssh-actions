@@ -1,0 +1,18 @@
+
+on: [push]
+jobs:
+  build:
+    name: Checkout and Test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the Code
+      uses: actions/checkout@v2
+
+    - name: Test SSH Command Using Key
+      uses: ./
+      with:
+        username: ${{ secrets.REMOTE_USER }}
+        host: ${{ secrets.REMOTE_HOST }}
+        fingerprint: ${{ secrets.REMOTE_FINGERPRINT }}
+        key: ${{ secrets.KEY }}
+        script: whoami
